@@ -53,6 +53,7 @@ class BosonStar
 
         double V (const double p);
         double dV (const double p);
+        double ddV (const double p);
 
         FieldState state_RHS(const double radius, long double frequency, FieldState  s, bool asymptotic_region, bool given_A = 0);
         FieldState state_expansion(const double radius, long double frequency);

@@ -8,7 +8,7 @@
 #include "BosonStar.h"
 #include "mathutils.h"
 #include <sstream>
-#include<iomanip>
+#include <iomanip>
 
 using namespace std;
 
@@ -29,7 +29,7 @@ FieldState operator*(double c, const FieldState& s)
     return (FieldState){c * s.A, c * s.X, c * s.phi, c * s.eta};
 }
 
-//potential and its  derivative (wrt |phi|^2)
+//potential and its  derivative (wrt |phi|^2) and second derivative
 double BosonStar::V( const double A)
 {
     if (!solitonic)
@@ -49,6 +49,17 @@ double BosonStar::dV( const double A)
         return mu * mu - 8. * mu * mu * pow(A / sigma, 2) + 12. * mu * mu * pow(A / sigma, 4) + 2 * A * A * lambda ;
 
 }
+
+double BosonStar::ddV( const double A) // new second derivative of potential added
+{
+    if (!solitonic)
+        return 2 * lambda;
+
+    else
+        return -8 * mu * mu / (sigma * sigma) + 24 * mu * mu * (pow(A, 2) / (pow(sigma, 4))) + 2 * lambda;
+
+}
+
 
 //read parameters in from file BSParams.par. TODO: default values
 void BosonStar::read_parameters(bool quiet)

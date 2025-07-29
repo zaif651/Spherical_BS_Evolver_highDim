@@ -49,6 +49,7 @@ class LinearPerturbation
         long double gamma0; //initial guess for undetermined constant affecting central initial values
 
         //inherited BS params
+        int D;
         int n_gridpoints;
         double R;
         double sigma;
